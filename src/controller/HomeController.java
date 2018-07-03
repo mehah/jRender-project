@@ -12,20 +12,15 @@ import service.UserService;
 
 @Page(name = "home", path = "home.html", ajaxSelector = ".panel-body", rules = "RULE_ADMIN")
 public class HomeController extends TemplateController {
+	private JQuery tableBody = new JQuery(".table > tbody");
 
 	@Connection
 	public void init(JRenderContext context) {
-		listUsers(context);
-	}
-
-	public void listUsers(JRenderContext context) {
 		UserService.getAllUsers()
 			.orElse(new ArrayList<User>())
 			.stream()
 			.forEach(this::addUser);
 	}
-
-	private JQuery tableBody = new JQuery(".table > tbody");
 
 	public void addUser(User user) {
 		JQuery tr = new JQuery("<tr></tr>").appendTo(tableBody);
