@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
-
 import com.jQuery.JQuery;
 import com.jrender.database.annotation.Connection;
 import com.jrender.jscript.dom.window.annotation.Page;
@@ -17,9 +15,7 @@ public class HomeController extends TemplateController {
 	@Connection
 	public void init(JRenderContext context) {
 		UserService.getAllUsers()
-			.orElse(new ArrayList<User>())
-			.stream()
-			.forEach(this::addUser);
+			.ifPresent(list -> list.stream().forEach(this::addUser));
 	}
 
 	public void addUser(User user) {
