@@ -19,7 +19,7 @@ public class EmailValidator implements Validator {
 	public boolean validate(Window window, Form form, ContainerElement<?> container, final Element element, final String name, Object value, String[] labels, DataValidation dataValidation) {
 		if (!pattern.matcher((String) value).matches()) {
 			TemplateController controller = (TemplateController) window;
-			controller.alertDanger("The mail format is incorrect in the '"+labels[0]+"' field.");
+			controller.alert.danger("The mail format is incorrect in the '"+labels[0]+"' field.");
 			element.focus();
 			
 			return false;

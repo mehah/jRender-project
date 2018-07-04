@@ -10,7 +10,7 @@ import service.UserService;
 
 @Page(name = "home", path = "home.html", ajaxSelector = ".panel-body", rules = "RULE_ADMIN")
 public class HomeController extends TemplateController {
-	private JQuery tableBody = new JQuery(".table > tbody");
+	private final JQuery tableBody = new JQuery(".table > tbody");
 
 	@Connection
 	public void init(JRenderContext context) {

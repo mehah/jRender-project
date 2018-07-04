@@ -14,7 +14,7 @@ public class RequiredValidator implements Validator {
 	public boolean validate(final Window window, Form form, ContainerElement<?> container, final Element element, final String name, Object value, String[] labels, DataValidation dataValidation) {
 		if (value == null || value instanceof String && ((String) value).isEmpty()) {
 			TemplateController controller = (TemplateController) window;
-			controller.alertDanger("Field '"+labels[0]+"' is required.");
+			controller.alert.danger("Field '"+labels[0]+"' is required.");
 			element.focus();
 			
 			return false;

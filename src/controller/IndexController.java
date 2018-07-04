@@ -28,13 +28,13 @@ public final class IndexController extends TemplateController {
 	@Validate
 	public void signin(JRenderContext context) throws NoSuchAlgorithmException, SQLException {
 		User user = UserService.getUserBy(loginForm.email.value(), loginForm.password.value());
-		if(user == null) {
-			alertWarning("Email or Password is incorrect.");
-			return;			
+		if (user == null) {
+			alert.warning("Email or Password is incorrect.");
+			return;
 		}
-		
+
 		context.getRequest().setUserPrincipal(user);
-		alertSuccess("Logged in with success.");		
+		alert.success("Logged in with success.");
 		setTimeout((arg) -> location.href("home.html"), 1000);
 	}
 }
